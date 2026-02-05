@@ -1,0 +1,17 @@
+class Solution:
+    def checkEqual(self, a, b) -> bool:
+        #code here
+        p=0
+        a.sort()
+        b.sort()
+        res=[]
+        while p<=len(a)-1 and p<=len(b)-1:
+            if a[p] == b[p] :
+                res.append(a[p])
+                p+=1
+            else:
+                return False
+        
+        return True
+                
+            
