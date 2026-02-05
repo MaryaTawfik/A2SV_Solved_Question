@@ -1,0 +1,9 @@
+class Solution:    
+    def findUnion(self, a, b):
+        # code here
+        A=set(a)
+        B=set(b)
+        # union=A|B
+        
+        return sorted(A|B)
+        
