@@ -1,0 +1,20 @@
+import math
+matrix=[]
+for _ in range(5):
+    row = list(map(int,input().split()))
+    # print (row)
+    matrix.append(row)
+# print (matrix)
+col= 0
+row_=0
+for i in range(len(matrix)):
+    for j in range(len(matrix[0])):
+        if matrix[i][j] == 1:
+            col+=j
+            row_+=i
+            
+            break
+operation = abs(row_- 2) + abs(col - 2)
+print (operation)
+
+
