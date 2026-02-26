@@ -1,0 +1,29 @@
+n = int(input())
+distances = [int(num) for num in input().split()]
+
+# min_sum = float('inf')
+# target = None
+
+# p2 = 0
+# while p2 < n:
+#     current_sum = 0
+#     p1 = 0
+#     while p1 < n:
+#         current_sum += abs(distances[p2] - distances[p1])
+#         p1 += 1
+
+    
+#     if current_sum < min_sum or (current_sum == min_sum and distances[p2] < target):
+#         min_sum = current_sum
+#         target = distances[p2]
+
+#     p2 += 1
+
+# print(target)
+
+
+distances.sort()
+
+target = distances[(n - 1) // 2]
+
+print(target)
