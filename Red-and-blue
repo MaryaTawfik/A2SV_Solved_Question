@@ -1,0 +1,19 @@
+for i in range(int(input())):
+    n=int(input())
+    r=[int(num) for num in input().split()]
+    m=int(input())
+    b=[int(num) for num in input().split()]
+    PSr=[0]+ r
+    PSb=[0]+ b
+    # print(PSr)
+    for i in range(1,len(PSr)):
+        PSr[i]+=PSr[i-1]
+    # print(PSr)
+    max_r=max(PSr)
+    for i in range(1,len(PSb)):
+        PSb[i]+=PSb[i-1]
+    max_b=max(PSb)
+    sum_=max_r+max_b
+    print(sum_)
+
+ 
