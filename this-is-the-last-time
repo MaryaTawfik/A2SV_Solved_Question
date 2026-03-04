@@ -1,0 +1,33 @@
+t=int(input())
+for i in range(t):
+    arr=[]
+    n,coin=list(map(int,input().split()))
+    for i in range(n):
+        row=[int(num) for num in input().split()]
+        arr.append(row)
+#     print(arr)
+#     # while arr:
+#     #     index=0
+#     #     max_coin=coin
+#     #     found=False
+#     #     for i in range(len(arr)):
+#     #         if max_coin >= arr[i][0]  and max_coin <=arr[i][1]:
+#     #             if max_coin <= arr[i][2]:
+#     #                 index=i
+#     #                 found=True
+
+#     #                 max_coin=arr[i][2]
+#     #     if not found:
+#     #         break
+#     #     arr.pop(index)
+#     #     coin=max_coin
+#     # print(coin)
+
+    arr.sort()
+    for l,r,k in arr:
+        if l <= coin and coin<=r:
+            if coin < k:
+                coin=k
+            
+    print(coin)
+ 
