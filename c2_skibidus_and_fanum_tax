@@ -1,0 +1,29 @@
+from bisect import bisect_left
+for _ in range(int(input())):
+    n,m=map(int,input().split())
+    a=list(map(int,input().split()))
+    b=list(map(int,input().split()))
+    b.sort()
+    prev=-10**18
+    possible=True
+
+    for i in range(n):
+        ans=[]
+        if a[i] >= prev:
+            ans.append(a[i])
+        target=prev+a[i]
+        idx=bisect_left(b,target)
+
+        if idx <m:
+            newval =b[idx]-a[i]
+            if newval >= prev:
+                ans.append(newval)
+        if not ans:
+            possible=False
+            break
+        prev=min(ans)
+    print("YES" if possible else "NO")
+
+         
+        
+
