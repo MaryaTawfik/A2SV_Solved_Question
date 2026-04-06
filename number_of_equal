@@ -1,0 +1,11 @@
+from collections import Counter
+n,m=map(int,input().split())
+a=list(map(int,input().split()))
+b=list(map(int,input().split()))
+counter_a=Counter(a)
+counter_b=Counter(b)
+total=0
+for key in  counter_a.keys() :
+    if key in counter_b:
+        total+=counter_a[key]*counter_b[key]
+print(total)
