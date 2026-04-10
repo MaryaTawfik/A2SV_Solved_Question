@@ -1,0 +1,51 @@
+for _ in range(int(input())):
+    n,x,k=map(int,input().split())
+    s=input()
+    #counter=0    # for i in range(k):
+    #     if s[i%n]=="R":
+    #         x+=1
+    #     elif s[i%n]=="L":
+    #         x-=1
+    #     if x==0:
+    #         counter+=1
+    # print(counter)
+    time_zero=-1
+
+    for i in range(n):
+        if s[i]=="R":
+            x+=1
+        else:
+            x-=1
+        if x==0:
+            time_zero=i+1
+            break
+    if time_zero==-1:
+        print(0)
+        continue
+    if time_zero>k:
+        print(0)
+        continue
+    # if time_zero==-1:
+    #     print(0)
+    #     continue
+
+    count=1
+    k-=time_zero
+    x=0
+    cycle=-1
+
+    for i in range(n):
+        if s[i]=="R":
+            x+=1
+        else:
+            x-=1
+        if x == 0:
+            cycle=i+1
+            break
+    if cycle == -1:
+        print(count)
+    else:
+        count+=k//cycle
+        print(count)
+
+
