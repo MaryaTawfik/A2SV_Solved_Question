@@ -1,0 +1,99 @@
+# from collections import defaultdict, deque
+# import sys
+
+# # Use sys.stdin.readline to read lines
+# line = sys.stdin.readline()
+# if not line:
+#     exit()
+
+# n = int(line.strip())
+# names = []
+# for _ in range(n):
+#     names.append(sys.stdin.readline().strip())
+
+# adj = defaultdict(list)
+# # Fixed the +1 placement here
+# in_degree = {chr(i): 0 for i in range(ord('a'), ord('z') + 1)}
+
+# for i in range(n-1):
+#     w1 = names[i]
+#     w2 = names[i+1]
+
+#     found_diff = False
+#     for j in range(min(len(w1), len(w2))):
+#         if w1[j] != w2[j]:
+#             adj[w1[j]].append(w2[j])
+#             in_degree[w2[j]] += 1
+#             found_diff = True
+#             break
+    
+#     if not found_diff and len(w1) > len(w2):
+#         print("Impossible")
+#         exit()
+
+# # MOVED OUTSIDE THE LOOP: Now we calculate the alphabet AFTER getting all rules
+# queue = deque([char for char in in_degree if in_degree[char] == 0])
+# alpha_order = []
+
+# while queue:
+#     current = queue.popleft()
+#     alpha_order.append(current)
+    
+#     for nei in adj[current]:
+#         in_degree[nei] -= 1
+#         if in_degree[nei] == 0:
+#             queue.append(nei)
+
+# if len(alpha_order) < 26:
+#     print("Impossible")
+# else:
+#     print("".join(alpha_order))
+
+from collections import defaultdict ,deque
+import sys
+line=sys.stdin.readline()
+n=int(line.strip())
+names=[]
+for i in range (n):
+    name = sys.stdin.readline().strip()
+    names.append(name)
+adj=defaultdict(list)
+# in_degree={chr(i):0 for i in range(ord('a'),ord('z'+1))}
+in_degree={chr(i):0 for i in range(ord('a'),ord('z')+1)}
+for i in range(n-1):
+    w1=names[i]
+    w2=names[i+1]
+
+    found_diff=False
+    for j in range(min(len(w1),len(w2))):
+        if w1[j]!=w2[j]:
+            adj[w1[j]].append(w2[j])
+            in_degree[w2[j]]+=1
+            found_diff=True
+            break
+    if not found_diff:
+        if len(w1)>len(w2):
+            print("Impossible")
+            exit()
+        
+queue=deque()
+for i in in_degree:
+    if in_degree[i]==0:
+        queue.append(i)
+
+order=[]
+
+while  queue:
+    res=queue.popleft()
+    order.append(res)
+
+    for nei in adj[res]:
+        in_degree[nei]-=1
+        if in_degree[nei]==0:
+            queue.append(nei)
+
+
+if len(order) < 26:
+    print("Impossible")
+else:
+    print("".join(order))
