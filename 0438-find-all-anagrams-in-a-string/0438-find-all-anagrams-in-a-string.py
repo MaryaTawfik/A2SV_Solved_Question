@@ -1,55 +1,37 @@
 from collections import Counter
 class Solution:
     def findAnagrams(self, s: str, p: str) -> List[int]:
-        ans=[]
-        target=Counter(p)
-        r=len(p)
+        # if len(p) > len(s):
+        #     return -1
+        target_counter=Counter(p)
+        k=len(p)
+        window_counter=Counter()
+        result=[]
 
-        for i in range(len(s)):
-            window=Counter(s[i:r])
-            if target == window:
-                ans.append(i)
-            r+=1
-        return ans
+        if len(p) > len(s):
+            return result
+
+        for i in range(k):
+            window_counter[s[i]]+=1
+
+        if window_counter == target_counter:
+            result.append(0)
+        
+        left=0
+
+        for right in range(k,len(s)):
+            window_counter[s[right]]+=1
+            window_counter[s[left]]-=1
+
+            if window_counter[s[left]] == 0:
+                del window_counter[s[left]]
+            
+            if window_counter == target_counter:
+                result.append(left+1)
+
+            left+=1
+        
+        return result
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        # result = []
-        # p_count = Counter(p)
-        # window_count = Counter()
-
-        # for i in range(len(s)):
        
-        #     window_count[s[i]] += 1
-
-        
-        #     if i >= len(p):
-        #         if window_count[s[i - len(p)]] == 1:
-        #             del window_count[s[i - len(p)]]
-        #         else:
-        #             window_count[s[i - len(p)]] -= 1
-
-     
-        #     if window_count == p_count:
-        #         result.append(i - len(p) + 1)
-
-        # return result
-        
